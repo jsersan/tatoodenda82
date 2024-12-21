@@ -1,0 +1,20 @@
+@mixin bordes {
+    border: solid 1px $primarylight;
+    border-radius: 5px;
+    box-shadow: lightgrey 0px 0px 20px;
+}
+
+@mixin boton{
+    padding: 10px 20px;
+    font-family: $defaultfont;
+    background-color: white;
+    @include bordes;
+}
+
+@mixin separacion-top {
+    border-top: solid 1px $primarylight;
+}
+
+@mixin separacion-bottom {
+    border-bottom: solid 1px $primarylight;
+}

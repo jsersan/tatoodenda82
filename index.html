@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Tienda online</title>
+    <!--FONTS-->
+    <link href="https://fonts.googleapis.com/css?family=Lovers+Quarrel" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Ruthie" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Montez" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+    <!--CSS-->
+    <link rel="stylesheet" type="text/css" href="scss/style.css" />
+    <!--jQuery-->
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
+    <!--Aplicación-->
+    <script src="js/app.js"></script>
+    <!--SweetAlert-->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+    <!--SLICK-->
+    <link rel="stylesheet" type="text/css" href="lib/slick/slick.css"/>
+    <link rel="stylesheet" type="text/css" href="lib/slick/slick-theme.css"/>
+</head>
+
+<body>
+    <header>
+        <h1 class="home">Tienda online</h1>
+    </header>
+    <nav>
+        <div>
+            <ul id="menu">
+                <li class="menuitem home">HOME</li>
+                <li id="search" class="menuitem">
+                    <input type="text" id="searchinput" />
+                    <img id="searchicon" src="img/icons/search.png" alt="botón de búsqueda">
+                </li>
+                <li id="carrito" class="menuitem">
+                    <img src="img/icons/cart.png" alt="carrito">
+                    <p></p>
+                </li>
+                <li id="login" class="menuitem">
+                    <img src="img/icons/login.png" alt="carrito">
+                    <p></p>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div id="banner">
+        <img src="img/icons/left-arrow.png" id="bannerback" width="32px" class="banner_button" />
+        <img src="#" alt="banner" id="bannerimg" />
+        <img src="img/icons/right-arrow.png" id="bannerforward" width="32px" class="banner_button" />
+    </div>
+    <div>
+        <h1 id="titulo"></h1>
+    </div>
+    <div id="articulos"></div>
+    <footer>
+        <p>Desarrollo Web Entorno Cliente</p>
+        <p>Eva Liberal Campos</p>
+        <p>Curso 2018-2019</p>
+    </footer>
+    <script type="text/javascript" src="lib/slick/slick.min.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Tienda online</title>
+    <!--FONTS-->
+    <link href="https://fonts.googleapis.com/css?family=Lovers+Quarrel" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Ruthie" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Montez" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+    <!--CSS-->
+    <link rel="stylesheet" type="text/css" href="scss/style.css" />
+    <!--jQuery-->
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
+    <!--Aplicación-->
+    <script src="js/admin.js"></script>
+    <!--SweetAlert-->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+</head>
+
+<body>
+    <header>
+        <h1 class="home">Tienda online</h1>
+    </header>
+    <nav>
+        <div>
+            <ul id="menu">
+                <li class="menuitem volver">
+                    <a href="#">
+                        ← VOLVER
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div id="divadmin">
+        <h1 id="titulo" >Administrador</h1>
+        <div id="admincat">
+            <h1>Categorías</h1>
+            <div>
+                <h2>Añadir categoria</h2>
+                <label>Nombre: </label>
+                <input type="text" id="txtnomcat"/>
+                <label>Padre: </label>
+                <select id="selecpadre">
+                    <option value="" selected disabled hidden></option>
+                    <option value="sin" >Sin Padre</option>
+                </select>
+                <input type="button" id="btnaniadircat" value="AÑADIR" />
+            </div><div>
+                <h2>Administrar categorias</h2>
+                <table id="editcat">
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Padre</th>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div id="adminart">
+            <h1>Artículos</h1>
+            <div>
+            <h2>Añadir artículo</h2>
+                <table>
+                    <tr>
+                        <td>
+                            <label>Nombre: </label>
+                        </td><td>
+                            <input type="text" id="nuevoartnombre" />
+                        </td>
+                    </tr><tr>
+                        <td>
+                            <label>Descripción</label>
+                        </td><td>
+                            <textarea id="nuevoartdescripcion"></textarea>
+                        </td>
+                    </tr><tr>
+                        <td>
+                            <label>Precio: </label>
+                        </td><td>
+                            <input type="number" id="nuevoartprecio" />
+                        </td>
+                    </tr><tr>
+                        <td>
+                            <label>Categoria: </label>
+                        </td><td>
+                            <select id="nuevoartcat">
+                                <option value="" selected disabled hidden></option>
+                            </select>
+                        </td>
+                    </tr><tr>
+                        <td>
+                            <label>Carpeta de imágenes: </label>
+                        </td><td>
+                            <input type="text" id="nuevoartfolder" />
+                        </td>
+                    </tr><tr>
+                        <td>
+                            <label>Imágenes: </label>
+                        </td><td>
+                            <form id="formimgs" form method="post" enctype="multipart/form-data">
+                                <input name="files[]" id="imagenes" type="file" multiple="" />
+                            </form>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <input type="submit" id="btnaniadirart" value="AÑADIR" />
+                        </td>
+                    </tr>
+                </table>
+            </div><div>
+                <h2>Administrar artículos</h2>
+                <table id="editart">
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Precio</th>
+                        <th>Categoría</th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <p>Desarrollo Web Entorno Cliente</p>
+        <p>Eva Liberal Campos</p>
+        <p>Curso 2018-2019</p>
+    </footer>
+</body>
+
+</html>

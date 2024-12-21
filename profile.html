@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Tienda online</title>
+    <!--FONTS-->
+    <link href="https://fonts.googleapis.com/css?family=Lovers+Quarrel" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Ruthie" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Montez" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+    <!--CSS-->
+    <link rel="stylesheet" type="text/css" href="scss/style.css" />
+    <!--jQuery-->
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
+    <!--Aplicación-->
+    <script src="js/profile.js"></script>
+    <!--SweetAlert-->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+</head>
+
+<body>
+    <header>
+        <h1 class="home">Tienda online</h1>
+    </header>
+    <nav>
+        <div>
+            <ul id="menu">
+                <li class="menuitem volver">
+                    <a href="#">
+                        ← VOLVER
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div id="divdatos">
+        <h1 id="titulo">Datos</h1>
+        <table>
+            <tr>
+                <td>Nombre de usuario: </td>
+                <td><input type="text" id="txtusername" size="10"/></td>
+            </tr>
+            <tr>
+                <td>Contraseña:</td>
+                <td><input type="password" id="txtpass" size="10"/></td>
+            </tr>
+            <tr>
+                <td>E-mail: </td>
+                <td><input type="email" id="txtemail" size="20"/></td>
+            </tr>
+            <tr>
+                <td>Nombre completo</td>
+                <td><input type="text" id="txtnombre" size="25"/></td>
+            </tr>
+            <tr>
+                <td>Dirección: </td>
+                <td><input type="text" id="txtdireccion" size="30"/></td>
+            </tr>
+            <tr>
+                <td>Ciudad: </td>
+                <td><input type="text" id="txtciudad" size="15"/></td>
+            </tr>
+            <tr>
+                <td>Código postal: </td>
+                <td><input type="text" id="txtcp" size="5"/></td>
+            </tr>
+            <tr>
+                <td colspan="2" style="text-align: center">
+                    <input type="button" id="actualizarDatos" value="ACTUALIZAR DATOS" />
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div id="divpedidos">
+        <h1 id="titulo">Historial de pedidos</h1>
+        <div id="pedidos"></div>
+    </div>
+    </div>
+    <footer>
+        <p>Desarrollo Web Entorno Cliente</p>
+        <p>Eva Liberal Campos</p>
+        <p>Curso 2018-2019</p>
+    </footer>
+</body>
+
+</html>

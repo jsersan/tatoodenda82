@@ -1,25 +1,26 @@
 <?php
-header( "Access-Control-Allow-Origin: *" );
+header("Access-Control-Allow-Origin: *");
 
 // Incluir la clase de base de datos
-include_once("../classes/class.database.php");
+include_once("../classes/class.Database.php");
 
-if (isset($_POST['id'])) {
-    $sql = "SELECT id, nombre, padre FROM categoria WHERE id=".$_POST['id'];
+$id = $_POST['id'] ?? 0;
 
-    $cat = Database::get_arreglo( $sql );
+if ($id > 0) {
+    $sql = "SELECT id, nombre, padre FROM categoria WHERE id=" . $id;
 
-    $respuesta = array(
-                'error' => false,
-                'categoria' => $cat 
-            );
+    $cat = Database::get_arreglo($sql);
+
+    $respuesta = [
+        'error' => false,
+        'categoria' => $cat
+    ];
 } else {
-    $respuesta = array(
-        'error' => true
-    );
+    $respuesta = [
+        'error' => true,
+        'mensaje' => 'ID de categoría no válido'
+    ];
 }
 
-
-echo json_encode( $respuesta );
-
+echo json_encode($respuesta);
 ?>

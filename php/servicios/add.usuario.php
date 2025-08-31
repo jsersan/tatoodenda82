@@ -3,23 +3,28 @@ header('Access-Control-Allow-Origin: *');
 // Incluir la clase de base de datos
 include_once("../classes/class.Database.php");
 
-//if (isset($_POST['username']) && isset($_POST['password'])) {
-    $sql = "INSERT INTO user VALUES (null,'"
-           .$_POST['username']."', '"
-           .$_POST['nombre']."','"
-           .$_POST['email']."','"
-           .$_POST['password']."','"
-           .$_POST['direccion']."','"
-           .$_POST['ciudad']."','"
-           .$_POST['cp']."')";
+$username = $_POST['username'] ?? '';
+$nombre = $_POST['nombre'] ?? '';
+$email = $_POST['email'] ?? '';
+$password = $_POST['password'] ?? '';
+$direccion = $_POST['direccion'] ?? '';
+$ciudad = $_POST['ciudad'] ?? '';
+$cp = $_POST['cp'] ?? '';
 
-    $res = Database::ejecutar_idu($sql);
-    $respuesta = array(
-        'error' => false,
-        'resultado' => $res
-    );
+$sql = "INSERT INTO user VALUES (null, '" .
+       $username . "', '" .
+       $nombre . "', '" .
+       $email . "', '" .
+       $password . "', '" .
+       $direccion . "', '" .
+       $ciudad . "', '" .
+       $cp . "')";
 
+$res = Database::ejecutar_idu($sql);
+$respuesta = [
+    'error' => false,
+    'resultado' => $res
+];
 
-echo json_encode( $respuesta );
-
+echo json_encode($respuesta);
 ?>

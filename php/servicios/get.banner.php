@@ -1,15 +1,19 @@
 <?php
 header('Access-Control-Allow-Origin: *');
-$files = scandir ( "../../img/banner");
-unset($files[0]);
-unset($files[1]);
 
-$respuesta = array(
-			'error' => false,
-			'imagenes' => $files 
-		);
+$directorio = '../../img/banner';
+$files = scandir($directorio);
 
-echo json_encode( $respuesta );
+// Filtrar los directorios . y .. 
+$files = array_diff($files, ['.', '..']);
 
+// Reiniciar los índices del array
+$files = array_values($files);
 
+$respuesta = [
+    'error' => false,
+    'imagenes' => $files
+];
+
+echo json_encode($respuesta);
 ?>

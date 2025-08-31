@@ -3,22 +3,24 @@ header('Access-Control-Allow-Origin: *');
 // Incluir la clase de base de datos
 include_once("../classes/class.Database.php");
 
-if (isset($_POST['articulo'])) {
-    $sql = "SELECT id, nombre, descripcion, precio, carpetaimg, imagen, categoria FROM producto WHERE id=".$_POST['articulo'];
+$articulo = $_POST['articulo'] ?? 0;
 
-    $art = Database::get_arreglo( $sql );
+if ($articulo > 0) {
+    $sql = "SELECT id, nombre, descripcion, precio, carpetaimg, imagen, categoria 
+            FROM producto WHERE id=" . $articulo;
 
-    $respuesta = array(
-                'error' => false,
-                'articulo' => $art 
-            );
+    $art = Database::get_arreglo($sql);
+
+    $respuesta = [
+        'error' => false,
+        'articulo' => $art
+    ];
 } else {
-    $respuesta = array(
-        'error' => true
-    );
+    $respuesta = [
+        'error' => true,
+        'mensaje' => 'ID de artículo no válido'
+    ];
 }
 
-
-echo json_encode( $respuesta );
-
+echo json_encode($respuesta);
 ?>

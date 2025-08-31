@@ -21,8 +21,8 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `bdshop`
 --
--- CREATE DATABASE IF NOT EXISTS `bdshop` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
-USE `qadq447`;
+-- CREATE DATABASE IF NOT EXISTS `tatoodenda` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
+USE `tatoodenda`;
 
 -- --------------------------------------------------------
 

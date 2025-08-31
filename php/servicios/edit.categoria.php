@@ -3,15 +3,20 @@ header('Access-Control-Allow-Origin: *');
 // Incluir la clase de base de datos
 include_once("../classes/class.Database.php");
 
-    if (isset($_POST['id'])){
-        $sql = "UPDATE categoria SET nombre = '".$_POST['nombre']."', padre=".$_POST['padre']." WHERE id=".$_POST['id'];
+$id = $_POST['id'] ?? 0;
+$nombre = $_POST['nombre'] ?? '';
+$padre = $_POST['padre'] ?? 0;
 
-        $res = Database::ejecutar_idu($sql);
-        $respuesta = array(
-            'error' => false,
-            'sql' => $sql,
-			'resultado' => $res
-		);
+if ($id > 0) {
+    $sql = "UPDATE categoria SET nombre = '" . $nombre . "', padre=" . $padre . " WHERE id=" . $id;
 
-        echo json_encode( $respuesta );
-    }
+    $res = Database::ejecutar_idu($sql);
+    $respuesta = [
+        'error' => false,
+        'sql' => $sql,
+        'resultado' => $res
+    ];
+
+    echo json_encode($respuesta);
+}
+?>

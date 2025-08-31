@@ -1,17 +1,24 @@
 <?php
-
 header('Access-Control-Allow-Origin: *');
 // Incluir la clase de base de datos
 include_once("../classes/class.Database.php");
 
-    if (isset($_POST['id'])){
-        $sql = "DELETE FROM categoria WHERE id=".$_POST['id'];
+$id = $_POST['id'] ?? 0;
 
-        $res = Database::ejecutar_idu($sql);
-        $respuesta = array(
-			'error' => false,
-			'resultado' => $res
-		);
+if ($id > 0) {
+    $sql = "DELETE FROM categoria WHERE id=" . $id;
 
-        echo json_encode( $respuesta );
-    }
+    $res = Database::ejecutar_idu($sql);
+    $respuesta = [
+        'error' => false,
+        'resultado' => $res
+    ];
+} else {
+    $respuesta = [
+        'error' => true,
+        'mensaje' => 'ID de categoría no válido'
+    ];
+}
+
+echo json_encode($respuesta);
+?>

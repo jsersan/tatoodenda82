@@ -3,31 +3,33 @@ header('Access-Control-Allow-Origin: *');
 // Incluir la clase de base de datos
 include_once("../classes/class.Database.php");
 
-if (isset($_POST['user']) && isset($_POST['pass'])) {
-    $sql = "SELECT id, username, nombre, email, direccion, cp, ciudad FROM user 
-            WHERE username='".$_POST['user']."' AND password='".$_POST['pass']."'";
+$username = $_POST['user'] ?? '';
+$password = $_POST['pass'] ?? null;
 
-    $user = Database::get_arreglo( $sql );
+if (!empty($username)) {
+    if ($password !== null) {
+        // Caso de login: buscar usuario y contraseña
+        $sql = "SELECT id, username, nombre, email, direccion, cp, ciudad 
+                FROM user 
+                WHERE username='" . $username . "' 
+                AND password='" . $password . "'";
+    } else {
+        // Caso de verificación: buscar solo por username
+        $sql = "SELECT id FROM user WHERE username='" . $username . "'";
+    }
 
-    $respuesta = array(
-                'error' => false,
-                'user' => $user 
-            );
-} else if (isset($_POST['user']) && !isset($_POST['password'])) {
-    $sql = "SELECT id FROM user WHERE username='".$_POST['user']."'";
-    $user = Database::get_arreglo( $sql );
+    $user = Database::get_arreglo($sql);
 
-    $respuesta = array(
-                'error' => false,
-                'user' => $user 
-            );
+    $respuesta = [
+        'error' => false,
+        'user' => $user
+    ];
 } else {
-    $respuesta = array(
-        'error' => true
-    );
+    $respuesta = [
+        'error' => true,
+        'mensaje' => 'Nombre de usuario no especificado'
+    ];
 }
 
-
-echo json_encode( $respuesta );
-
+echo json_encode($respuesta);
 ?>

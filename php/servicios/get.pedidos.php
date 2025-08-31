@@ -3,25 +3,28 @@ header('Access-Control-Allow-Origin: *');
 // Incluir la clase de base de datos
 include_once("../classes/class.Database.php");
 
-if (isset($_POST['id'])) {
-    $sql = "SELECT idpedido, nombre, color, cant  FROM pedido, lineapedido, producto WHERE idpedido = pedido.id AND idprod = producto.id AND iduser = ".$_POST['id'];
-    $lineas = Database::get_arreglo( $sql );
-    $sql = "SELECT distinct(id), fecha, total FROM pedido WHERE iduser = ".$_POST['id']." ORDER BY fecha desc";
-    $pedidos = Database::get_arreglo($sql);
-    $respuesta = array(
-			'error' => false,
-            'pedidos' => $pedidos,
-            'lineas' => $lineas
-		);
+$id = $_POST['id'] ?? 0;
 
+if ($id > 0) {
+    $sql = "SELECT idpedido, nombre, color, cant FROM pedido, lineapedido, producto 
+            WHERE idpedido = pedido.id AND idprod = producto.id AND iduser = " . $id;
+    $lineas = Database::get_arreglo($sql);
+    
+    $sql = "SELECT DISTINCT(id), fecha, total FROM pedido 
+            WHERE iduser = " . $id . " ORDER BY fecha DESC";
+    $pedidos = Database::get_arreglo($sql);
+    
+    $respuesta = [
+        'error' => false,
+        'pedidos' => $pedidos,
+        'lineas' => $lineas
+    ];
 } else {
-    $respuesta = array(
-        'error' => true
-    );
+    $respuesta = [
+        'error' => true,
+        'mensaje' => 'ID de usuario no válido'
+    ];
 }
 
-
-echo json_encode( $respuesta );
-
-
+echo json_encode($respuesta);
 ?>

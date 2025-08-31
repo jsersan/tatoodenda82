@@ -3,21 +3,21 @@ header('Access-Control-Allow-Origin: *');
 // Incluir la clase de base de datos
 include_once("../classes/class.Database.php");
 
-//if (isset($_POST['nombre']) && isset($_POST['padre'])) {
-    $padre = $_POST['padre'];
-    if ($_POST['padre'] == 'sin') {
-        $stm = "SELECT `AUTO_INCREMENT` FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'bdshop' AND TABLE_NAME = 'categoria'";
-        $padre = Database::get_row($stm)["AUTO_INCREMENT"];
-    }
+$padre = $_POST['padre'] ?? '';
+if ($_POST['padre'] == 'sin') {
+    $stm = "SELECT `AUTO_INCREMENT` FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'bdshop' AND TABLE_NAME = 'categoria'";
+    $padre = Database::get_row($stm)["AUTO_INCREMENT"] ?? 1;
+}
 
-    $sql = "INSERT INTO categoria VALUES (null,'".$_POST['nombre']."', ".$padre.")";
+$nombre = $_POST['nombre'] ?? '';
+$sql = "INSERT INTO categoria VALUES (null, '" . $nombre . "', " . $padre . ")";
 
-    $res = Database::ejecutar_idu($sql);
-    $respuesta = array(
-        'error' => false,
-        'padre' => $padre,
-        'resultado' => $res
-    );
+$res = Database::ejecutar_idu($sql);
+$respuesta = [
+    'error' => false,
+    'padre' => $padre,
+    'resultado' => $res
+];
 
-
-echo json_encode( $respuesta );
+echo json_encode($respuesta);
+?>
